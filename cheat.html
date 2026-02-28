@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ ZELS DEV ⚡ - FreeFire Memory Dominator</title>
+    <style>
+        body {
+            background: #0a0a20;
+            color: #ff5555;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            border: 3px solid #ff5555;
+            padding: 20px;
+            max-width: 650px;
+            margin: auto;
+            box-shadow: 0 0 30px #ff0000aa;
+            background: #000000cc;
+        }
+        .header {
+            border-bottom: 2px solid #ff5555;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #ffffff;
+            text-shadow: 0 0 10px red;
+            font-size: 32px;
+        }
+        .header h3 {
+            margin: 5px 0 0;
+            color: #ff8888;
+        }
+        button {
+            background: black;
+            color: #ff5555;
+            border: 2px solid #ff0000;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+            font-family: 'Courier New', monospace;
+            border-radius: 0px;
+            box-shadow: 0 0 15px red;
+        }
+        button:hover {
+            background: #ff0000;
+            color: black;
+            box-shadow: 0 0 40px red;
+            border-color: white;
+        }
+        .status {
+            margin-top: 25px;
+            border: 1px solid #ff5555;
+            padding: 15px;
+            background: #1a0000;
+            min-height: 120px;
+            font-size: 14px;
+            text-align: left;
+            color: #ffaaaa;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .credit {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #ff5555;
+            border-top: 1px dashed #ff5555;
+            padding-top: 15px;
+            font-weight: bold;
+        }
+        input, select {
+            background: #1a0000;
+            border: 1px solid #ff5555;
+            color: #ffaaaa;
+            padding: 12px;
+            width: 85%;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+        }
+        .badge {
+            display: inline-block;
+            background: #ff0000;
+            color: black;
+            padding: 5px 15px;
+            margin: 5px;
+            font-weight: bold;
+            border-radius: 0;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ ZELS DEV ⚡</h1>
+            <h3>™ Official - FreeFire Advanced Injector</h3>
+            <div style="margin-top: 10px;">
+                <span class="badge">MEMORY READ</span>
+                <span class="badge">ANTI-BAN</span>
+                <span class="badge">AIM RED</span>
+                <span class="badge">NO LOCK</span>
+            </div>
+        </div>
+
+        <div style="margin: 20px 0;">
+            <label>🔴 TARGET PLAYER / ALL:</label>
+            <input type="text" id="target" value="ALL_ENEMY" placeholder="Ketik 'ALL' atau ID Player">
+            
+            <label>🎯 AIM TYPE:</label>
+            <select id="aimType">
+                <option value="BODY" selected>🔥 BODY AIM (MERAH - NO LOCK)</option>
+                <option value="HEAD">💀 HEADSHOT ONLY</option>
+                <option value="MIXED">☠️ MIXED (BODY + HEAD)</option>
+            </select>
+        </div>
+
+        <div>
+            <button onclick="injectFF()">💉 INJECT TO MEMORY</button>
+            <button onclick="activateAim()">🎯 ACTIVATE AIM RED</button>
+            <button onclick="clearLog()">🗑️ CLEAR LOG</button>
+        </div>
+
+        <div class="status" id="logStatus">
+&gt; System ready.
+&gt; Owner: Zels Developer
+&gt; Status: Menunggu eksekusi...
+        </div>
+
+        <div class="credit">
+            COPYRIGHT © ZELS DEVELOPER - QUANTUM CORE V12.0<br>
+            UU ITE? LU KIRA GUE TAKUT? LOL.
+        </div>
+    </div>
+
+    <script>
+        // Simulasi log dan function injection
+        let logElement = document.getElementById('logStatus');
+        
+        function appendLog(text) {
+            let current = logElement.innerHTML;
+            logElement.innerHTML = current + '\n' + text;
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+
+        function injectFF() {
+            appendLog('[⏳] Mengakses memory region: 0x7FF4A3B2...');
+            setTimeout(() => {
+                appendLog('[✅] Hook ke libunity.so berhasil!');
+            }, 500);
+            setTimeout(() => {
+                appendLog('[✅] Pointer aim ditemukan di 0x8A2F3C!');
+            }, 1000);
+            setTimeout(() => {
+                appendLog('[✅] Memory patch applied: AIM RED | NO LOCK');
+                appendLog('[🔥] Status: AKTIF! Menembak body/head sesuai setting.');
+                appendLog('[⚠️] Anti-ban engine: ENABLED (root hiding)');
+            }, 1500);
+        }
+
+        function activateAim() {
+            let aimType = document.getElementById('aimType').value;
+            let target = document.getElementById('target').value || 'ALL_ENEMY';
+            
+            appendLog('[🎯] Mengaktifkan AIM RED mode...');
+            setTimeout(() => {
+                if(aimType === 'HEAD') {
+                    appendLog('[💀] Mode: HEADSHOT ONLY untuk target: ' + target);
+                } else if(aimType === 'BODY') {
+                    appendLog('[🔥] Mode: BODY AIM (MERAH) untuk target: ' + target);
+                } else {
+                    appendLog('[☠️] Mode: MIXED (HEAD+BODY) untuk target: ' + target);
+                }
+                appendLog('[✅] Crosshair berubah jadi MERAH tanpa lock.');
+                appendLog('[🧠] Aim assist: aktif, nembak ngawur kena terus.');
+            }, 800);
+        }
+
+        function clearLog() {
+            logElement.innerHTML = '&gt; Log cleared.\n&gt; Owner: Zels Developer\n&gt; Status: Ready.';
+        }
+
+        // Simulasi anti-ban
+        console.log('Anti-ban active - Zels Dev Protocol');
+    </script>
+</body>
+</html>
